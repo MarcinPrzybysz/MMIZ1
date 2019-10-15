@@ -19,7 +19,11 @@ public class ComplexNum {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return real + "+" + img + " i";
+=======
+        return real + "+" + img + "*i";
+>>>>>>> Add basic exceptions and controls for user
     }
 
     /**
