@@ -1,31 +1,4 @@
 import Entity.ComplexNum;
-<<<<<<< HEAD
-
-public class App {
-
-    public static void main(String[] args) {
-        Operation op = new Operation();
-        Representation rep = new Representation();
-
-        ComplexNum x = rep.addNewComplex();
-        ComplexNum y = rep.addNewComplex();
-
-        System.out.println("pierwsza liczba:");
-        System.out.println(rep.printComplexNum(x));
-
-        System.out.println("druga liczba:");
-        System.out.println(rep.printComplexNum(y));
-
-        System.out.println("DZIELENIE:");
-        System.out.println(rep.printComplexNum(op.divide(x, y)));
-
-        // System.out.println("druga liczba:");
-        //rep.printComplexNum(y);
-
-
-    }
-
-=======
 import java.util.Scanner;
 public class App {
 
@@ -126,6 +99,5 @@ public class App {
                 "Lista funkcji:\n1.Dodawanie liczb zespolonych,\n2.Odejmowanie liczb zespolonych,\n3.Mnożenie liczb zespolonych\n4.Dzielenie liczb zespolonych,\5.Moduł liczb zespolonych,\n6.Sprzężenie liczb zespolonych.");
         System.out.println("Wybierz operację która ma zostać wykonana\n(wpisanie \"0\" wyświetli wyniki każdej operacji, \"H\" wyświetli spis funkcji).\n");
     }
->>>>>>> Add basic exceptions and controls for user
 
 }
