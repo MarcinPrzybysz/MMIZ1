@@ -19,7 +19,23 @@ public class ComplexNum {
 
     @Override
     public String toString() {
-        return real + "+" + img + "*i";
+
+        if (img == 0 && real == 0) {
+            return "0";
+        }
+        else if (real == 0) {
+            return img + "*i";
+        }
+        else if (img == 0) {
+            return String.valueOf(real);
+        }
+        else if (img < 0 && real != 0) {
+            return real + "-" + (-1*img) + "*i";
+        }
+        else {
+            return real + "+" + img + "*i";
+        }
+
     }
 
     /**

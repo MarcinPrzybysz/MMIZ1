@@ -20,30 +20,31 @@ public class Representation {
     /**
      * Metoda zwracająca liczbę zespoloną a+bi (jako strumień)
      * 
-     * @param real Część rzeczywista liczby zespolonej
-     * @param img  Część urojona liczby zespolonej
+     * @param complex Część rzeczywista liczby zespolone
      * @return String w formacie l.rzeczywista + l.urojona i
      */
-    public String printComplexNum(ComplexNum complex) {
+ //  public String printComplexNum(ComplexNum complex) {
 
-        double real = complex.getReal();
-        double img = complex.getImg();
-        if (real == 0) {
-            return img + "*i";
-        }
-        else if (img == 0 && real == 0) {
-            return "0";
-        }
-        else if (img == 0) {
-            return String.valueOf(real);
-        }
-        else if (img < 0 && real != 0) {
-            return real + "-" + (-1*img) + "*i";
-        }
-        else {
-            return real + "+" + img + "*i";
-        }
-    }
+ //      double real = complex.getReal();
+ //      double img = complex.getImg();
+ //      if (real == 0) {
+ //          return img + "*i";
+ //      }
+ //      else if (img == 0 && real == 0) {
+ //          return "0";
+ //      }
+ //      else if (img == 0) {
+ //          return String.valueOf(real);
+ //      }
+ //      else if (img < 0 && real != 0) {
+ //          return real + "-" + (-1*img) + "*i";
+ //      }
+ //      else {
+ //          return real + "+" + img + "*i";
+ //      }
+ //  }
+
+
 
 
     /**
@@ -52,11 +53,11 @@ public class Representation {
      * @return Zwraca nowy obiekt liczby zespolonej
      */
     public ComplexNum addNewComplex() {
-        //todo: data input veryfication
+        //todo: data input verification
 
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("Podaj część rzczywistą: ");
+        System.out.print("Podaj część rzeczywistą: ");
         String real = scan.nextLine();
 
         System.out.print("Podaj część urojoną: ");

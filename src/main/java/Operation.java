@@ -92,7 +92,7 @@ public class Operation {
         catch (Exception divideException) {
             System.out.println("Error: " + divideException.getMessage());
             return null;
-        } 
+        }
     }
 
     /**
@@ -126,6 +126,60 @@ public class Operation {
             System.out.println("Error: " + conjugateException.getMessage());
             return null;
         }
+    }
+
+    /**
+     * oblicza argument liczby zespolonej (kąt skierowany między wektorem reprezentującym liczbę zespoloną, a osią rzeczywistą
+     * @param complexNumber
+     * @return zwraca wartość kąta wyrazoną w stopiach
+     */
+    public double angle(ComplexNum complexNumber){
+        //TODO: zwracane wartości w ćwiartkach innych niż II są ujemne, trzeba dodać warunki
+        double real = complexNumber.getReal();
+        double img = complexNumber.getImg();
+        if(real>0){
+            return Math.toDegrees(Math.atan2(img,real));
+        }else if(real<0){
+            return  Math.toDegrees(Math.atan2(img,real))+180;
+        }else{
+            if (img>0){
+                return 90;
+            }else if(img<0){
+                return -90;
+            }else{
+                //TODO:ARGUMENT JEST NIEOKREŚLONy
+                return 99999999;
+            }
+        }
+
+    }
+
+
+    public double logarithm(ComplexNum complexNumber){
+        //TODO:
+        return 0;
+    }
+
+    public ComplexNum inverse(ComplexNum complexNumber) {
+        //UWAGA: suma kwadratów Re i Im !=0
+        //TODO:exception
+        //z*z^-1 =1 (do testu)
+
+        double real = complexNumber.getReal();
+        double img = complexNumber.getImg();
+
+        complexNumber = conjugate(complexNumber);
+
+        double denominator = complexNumber.getImg()*complexNumber.getImg()+complexNumber.getReal()*complexNumber.getReal();
+
+        return new ComplexNum(complexNumber.getReal()/denominator, complexNumber.getImg()/denominator);
+    }
+
+
+    public ComplexNum expotential(ComplexNum complexNumber){
+        //e^z
+        //TODO:
+        return null;
     }
 
 }
