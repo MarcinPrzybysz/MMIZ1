@@ -22,17 +22,13 @@ public class ComplexNum {
 
         if (img == 0 && real == 0) {
             return "0";
-        }
-        else if (real == 0) {
+        } else if (real == 0) {
             return img + "*i";
-        }
-        else if (img == 0) {
+        } else if (img == 0) {
             return String.valueOf(real);
-        }
-        else if (img < 0 && real != 0) {
-            return real + "-" + (-1*img) + "*i";
-        }
-        else {
+        } else if (img < 0 && real != 0) {
+            return real + "-" + (-1 * img) + "*i";
+        } else {
             return real + "+" + img + "*i";
         }
 
@@ -59,6 +55,7 @@ public class ComplexNum {
 
     /**
      * Metoda nadpisuje metodę equals w ten sposób, że zamiast porównywać referencje porównuje poszczególne wartości zmiennych obiektu
+     *
      * @param
      * @return
      */

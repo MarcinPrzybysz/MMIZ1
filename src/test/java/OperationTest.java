@@ -2,6 +2,7 @@ import Entity.ComplexNum;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static jdk.nashorn.internal.objects.NativeMath.round;
 import static org.junit.Assert.*;
 
 public class OperationTest {
@@ -56,6 +57,14 @@ public class OperationTest {
 
         Assert.assertEquals(result, op.divide(x,y));
     }
+
+    @Test
+    public void inverse() {
+        ComplexNum x = new ComplexNum(-1.2,3);
+
+        Assert.assertEquals(1, op.multiplicate(x,op.inverse(x)) );
+    }
+
 
     @Test
     public void divideZero(){

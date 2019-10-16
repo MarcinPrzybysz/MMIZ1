@@ -40,18 +40,50 @@ public class App {
                 case "0":
                     System.out.println("(" + firstComplex + ") + (" + secondComplex + ") = "
                             + operation.add(firstComplex, secondComplex));
+                    System.out.println();
                     System.out.println("(" + firstComplex + ") - (" + secondComplex + ") = "
                             + operation.subtract(firstComplex, secondComplex));
+                    System.out.println();
                     System.out.println("(" + firstComplex + ") * (" + secondComplex + ") = "
                             + operation.multiplicate(firstComplex, secondComplex));
+                    System.out.println();
                     System.out.println("(" + firstComplex + ") / (" + secondComplex + ") = "
                             + operation.divide(firstComplex, secondComplex));
+                    System.out.println();
                     System.out.println("|" + firstComplex + "| = " + operation.modulus(firstComplex));
                     System.out.println("|" + secondComplex + "| = " + operation.modulus(secondComplex));
+                    System.out.println();
                     System.out.println("Sprzężenie liczby zespolonej " + firstComplex + " wynosi: "
                             + operation.conjugate(firstComplex));
                     System.out.println("Sprzężenie liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.conjugate(secondComplex));
+                    System.out.println();
+                    System.out.println("Argument liczby zespolonej " + firstComplex + " wynosi: "
+                            + Math.toDegrees(operation.angle(firstComplex)));
+                    System.out.println("Argument liczby zespolonej " + secondComplex + " wynosi: "
+                            + Math.toDegrees(operation.angle(secondComplex)));
+                    System.out.println();
+                    System.out.println("Odwrotność liczby zespolonej " + firstComplex + " wynosi: "
+                            + operation.inverse(firstComplex));
+                    System.out.println("Odwrotność liczby zespolonej " + secondComplex + " wynosi: "
+                            + operation.inverse(secondComplex));
+                    System.out.println();
+                    System.out.println("Logarytm liczby zespolonej " + firstComplex + " wynosi: "
+                            + operation.logarithm(firstComplex));
+                    System.out.println("Logarytm liczby zespolonej " + secondComplex + " wynosi: "
+                            + operation.logarithm(secondComplex));
+                    System.out.println();
+                    System.out.println("e do potęgi liczby zespolonej " + firstComplex + " wynosi: "
+                            + operation.expotential(firstComplex));
+                    System.out.println("e do potęgi liczby zespolonej " + secondComplex + " wynosi: "
+                            + operation.expotential(secondComplex));
+                    System.out.println();
+                    System.out.println("Postać trygonometryczna liczby zespolonej " + firstComplex + " wynosi: "
+                            + operation.trigonometric(firstComplex));
+                    System.out.println("Postać trygonometryczna liczby zespolonej " + secondComplex + " wynosi: "
+                            + operation.trigonometric(secondComplex));
+
+
                     break;
                 case "1":
                     System.out.println("(" + firstComplex + ") + (" + secondComplex + ") = "
@@ -81,9 +113,9 @@ public class App {
                     break;
                 case "7":
                     System.out.println("Argument liczby zespolonej " + firstComplex + " wynosi: "
-                            + operation.angle(firstComplex));
+                            + Math.toDegrees(operation.angle(firstComplex)));
                     System.out.println("Argument liczby zespolonej " + secondComplex + " wynosi: "
-                            + operation.angle(secondComplex));
+                            + Math.toDegrees(operation.angle(secondComplex)));
                     break;
                 case "8":
                     System.out.println("Odwrotność liczby zespolonej " + firstComplex + " wynosi: "
@@ -102,6 +134,12 @@ public class App {
                             + operation.expotential(firstComplex));
                     System.out.println("e do potęgi liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.expotential(secondComplex));
+                    break;
+                case "11":
+                    System.out.println("Postać trygonometryczna liczby zespolonej " + firstComplex + " wynosi: "
+                            + operation.trigonometric(firstComplex));
+                    System.out.println("Postać trygonometryczna liczby zespolonej " + secondComplex + " wynosi: "
+                            + operation.trigonometric(secondComplex));
                     break;
                 case "H":
                 case "h":
@@ -129,14 +167,15 @@ public class App {
                         "0.Wypisz wszystkie operacje,\n" +
                         "1.Dodawanie liczb zespolonych,\n" +
                         "2.Odejmowanie liczb zespolonych,\n" +
-                        "3.Mnożenie liczb zespolonych\n" +
+                        "3.Mnożenie liczb zespolonych,\n" +
                         "4.Dzielenie liczb zespolonych,\n" +
                         "5.Moduł liczb zespolonych,\n" +
-                        "6.Sprzężenie liczb zespolonych\n"+
-                        "7.Argument liczb zespolonych\n"+
-                        "8.Odwrotność liczb zespolonych\n"+
-                        "9.Logarytm liczb zespolonych\n"+
-                        "10.e do potęgi liczb zespolonych,\n");
+                        "6.Sprzężenie liczb zespolonych,\n"+
+                        "7.Argument liczb zespolonych,\n"+
+                        "8.Odwrotność liczb zespolonych,\n"+
+                        "9.Logarytm liczb zespolonych,\n"+
+                        "10.e do potęgi liczb zespolonych,\n"+
+                        "11.Postać trygonometryczna.\n");
         System.out.println("Wybierz operację która ma zostać wykonana\n(wpisanie \"0\" wyświetli wyniki każdej operacji, \"H\" wyświetli spis funkcji).\n");
     }
 
