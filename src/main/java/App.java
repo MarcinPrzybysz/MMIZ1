@@ -1,6 +1,6 @@
-import Entity.ComplexNum;
-
 import java.util.Scanner;
+
+import Entity.ComplexNum;
 
 public class App {
 
@@ -68,9 +68,9 @@ public class App {
                     System.out.println("Odwrotność liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.inverse(secondComplex));
                     System.out.println();
-                    System.out.println("Logarytm liczby zespolonej " + firstComplex + " wynosi: "
+                    System.out.println("Logarytm naturalny liczby zespolonej " + firstComplex + " wynosi: "
                             + operation.logarithm(firstComplex));
-                    System.out.println("Logarytm liczby zespolonej " + secondComplex + " wynosi: "
+                    System.out.println("Logarytm naturalny liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.logarithm(secondComplex));
                     System.out.println();
                     System.out.println("e do potęgi liczby zespolonej " + firstComplex + " wynosi: "
@@ -82,8 +82,6 @@ public class App {
                             + operation.trigonometric(firstComplex));
                     System.out.println("Postać trygonometryczna liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.trigonometric(secondComplex));
-
-
                     break;
                 case "1":
                     System.out.println("(" + firstComplex + ") + (" + secondComplex + ") = "
@@ -124,9 +122,9 @@ public class App {
                             + operation.inverse(secondComplex));
                     break;
                 case "9":
-                    System.out.println("Logarytm liczby zespolonej " + firstComplex + " wynosi: "
+                    System.out.println("Logarytm naturalny liczby zespolonej " + firstComplex + " wynosi: "
                             + operation.logarithm(firstComplex));
-                    System.out.println("Logarytm liczby zespolonej " + secondComplex + " wynosi: "
+                    System.out.println("Logarytm naturalny liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.logarithm(secondComplex));
                     break;
                 case "10":
@@ -174,7 +172,7 @@ public class App {
                         "7.Argument liczb zespolonych,\n"+
                         "8.Odwrotność liczb zespolonych,\n"+
                         "9.Logarytm liczb zespolonych,\n"+
-                        "10.e do potęgi liczb zespolonych,\n"+
+                        "10.e do potęgi liczb zespolonych (e^Z),\n"+
                         "11.Postać trygonometryczna.\n");
         System.out.println("Wybierz operację która ma zostać wykonana\n(wpisanie \"0\" wyświetli wyniki każdej operacji, \"H\" wyświetli spis funkcji).\n");
     }

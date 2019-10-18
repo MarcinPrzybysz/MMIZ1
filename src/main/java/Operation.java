@@ -55,9 +55,9 @@ public class Operation {
             double imgFirst = firstComplex.getImg();
             double realSecond = secondComplex.getReal();
             double imgSecond = secondComplex.getImg();
-
+            
             return new ComplexNum((realFirst * realSecond - imgFirst * imgSecond),
-                    (realFirst * imgSecond + imgFirst * realSecond));
+                    (realFirst * imgSecond + imgFirst * realSecond)); 
         } catch (Exception multiplicateException) {
             System.out.println("Error: " + multiplicateException.getMessage());
             return null;
@@ -72,8 +72,6 @@ public class Operation {
      * @return Zwraca obiekt liczby zespolonej stanowiącej iloraz (a,b)/(c,d)
      */
     public ComplexNum divide(ComplexNum firstComplex, ComplexNum secondComplex) {
-        // TODO: sprawdzić wszystkie warunki
-        // TODO: poprawić wydajnosc?
         try {
             double realFirst = firstComplex.getReal();
             double imgFirst = firstComplex.getImg();
@@ -86,6 +84,7 @@ public class Operation {
                     / (realSecond * realSecond + imgSecond * imgSecond);
 
             return new ComplexNum(real, imaginary);
+            
         } catch (Exception divideException) {
             System.out.println("Error: " + divideException.getMessage());
             return null;
@@ -124,45 +123,18 @@ public class Operation {
     }
 
     /**
-     * oblicza argument liczby zespolonej (kąt skierowany między wektorem reprezentującym liczbę zespoloną, a osią rzeczywistą
-     *
+     * Oblicza argument liczby zespolonej (kąt skierowany między wektorem reprezentującym liczbę zespoloną, a osią rzeczywistą
      * @param complexNumber
      * @return zwraca wartość kąta wyrazoną w radianach
      */
     public Double angle(ComplexNum complexNumber) {
-
-        Double result;
-        double real = complexNumber.getReal();
-        double img = complexNumber.getImg();
         try {
-            if (real > 0) {
-                result = Math.atan2(img, real);
-            } else if (real < 0) {
-                result = Math.atan2(img, real) + Math.PI;
-            } else {
-                if (img > 0) {
-                    result = Math.PI / 2;
-                } else if (img < 0) {
-                    result = -Math.PI / 2;
-                } else {
-                    result = null;
-                }
-            }
-        } catch (Exception e) {
-            //TODO:źle przechwytuje chyba wyjątek, nie drukuje exception, jako wynik daje nieskończoność
-            System.out.println("Error: " + e.getMessage());
+            return Math.atan2(complexNumber.getImg(), complexNumber.getReal());
+        } catch (Exception angleException) {
+            
+            System.out.println("Error: " + angleException.getMessage());
             return null;
         }
-
-        if (result > 0) {
-            if (result > (2 * Math.PI)) {
-                return (result - 2 * Math.PI);
-            }
-            return result;
-        } else {
-            return 2 * Math.PI + result;
-        }
-
     }
 
     /**
@@ -172,41 +144,61 @@ public class Operation {
      * @return obliekt liczby zespoloną
      */
     public ComplexNum logarithm(ComplexNum complexNumber) {
-        //TODO: jak możesz to sprawdź, czy część urojoną dobrze liczy, tu jest chyba kwestia odpowiedniej ćwiartki przy liczeniu kąta
-
-        double real = Math.log(modulus(complexNumber));
-        double img = angle(complexNumber);
-        ComplexNum complexNum = new ComplexNum(real, img);
-        return complexNum;
+        try{
+            double real = Math.log(modulus(complexNumber));
+            double img = angle(complexNumber);
+            ComplexNum complexNum = new ComplexNum(real, img);
+            return complexNum;
+        }catch (Exception logaritmException) {
+            System.out.println("Error: " + logaritmException.getMessage());
+            return null;
+        }
     }
 
+    /**
+     * Metoda zwraca odwrotność liczby zespolonej
+     * @param complexNumber Obiekt liczby zespolonej
+     * @return Obiekt zawierający odwrotność podanej liczby zespolonej
+     */
     public ComplexNum inverse(ComplexNum complexNumber) {
-        //UWAGA: suma kwadratów Re i Im !=0
-        //TODO:exception
+        try {
+            if (complexNumber.getReal() == 0 && complexNumber.getImg() == 0) {
+                System.out.println("Działanie 1/0 jest niezdefiniowane (nie możliwe do wykonania)");
+                return null;
+            }
+            else {
+                    complexNumber = conjugate(complexNumber);
 
-        double real = complexNumber.getReal();
-        double img = complexNumber.getImg();
+                    double denominator = complexNumber.getImg() * complexNumber.getImg() + complexNumber.getReal() * complexNumber.getReal();
 
-        complexNumber = conjugate(complexNumber);
-
-        double denominator = complexNumber.getImg() * complexNumber.getImg() + complexNumber.getReal() * complexNumber.getReal();
-
-        return new ComplexNum(complexNumber.getReal() / denominator, complexNumber.getImg() / denominator);
+                    return new ComplexNum(complexNumber.getReal() / denominator, complexNumber.getImg() / denominator);
+            }
+        } catch (Exception inversException) {
+            System.out.println("Error: " + inversException.getMessage());
+            return null; 
+        }
     }
 
-
+    /**
+     * Metoda zwraca wartość e^Z
+     * @param complexNumber Obiekt liczby zespolonej (Z)
+     * @return Obiekt będący wynikiem działania e^Z
+     */
     public ComplexNum expotential(ComplexNum complexNumber) {
-        //e^z
-        //TODO:
-        return null;
+        return new ComplexNum(Math.exp(complexNumber.getReal()) * Math.cos(complexNumber.getImg()),
+                Math.exp(complexNumber.getReal()) * Math.sin(complexNumber.getImg())); 
     }
 
-
+    /**
+     * Metoda zwraca zapis trygonometryczny liczby zespolonej
+     * @param complexNumber Obiekt liczby zespolonej
+     * @return Strumień zawierający zapis trygonometryczny liczby zespolonej
+     */
     public String trigonometric(ComplexNum complexNumber) {
         double modulus = modulus(complexNumber);
         double ang = Math.toDegrees(angle(complexNumber));
 
-        return modulus + "(cos(" + ang + ") + ( i*sin(" + ang + ")";
+        return modulus + "(cos(" + ang + ") + ( i*sin(" + ang + "))";
     }
 
 }
