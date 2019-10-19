@@ -4,10 +4,6 @@ import Entity.ComplexNum;
 
 public class App {
 
-    //TODO:	zapis w postaci trygonometrycznej
-    // 0(cos(0°) + i·sin(0°))
-    // https://obliczone.pl/kalkulatory/864-kalkulator-liczb-zespolonych
-
     public static void main(String[] args) {
         Operation operation = new Operation();
         Representation representation = new Representation();
@@ -73,9 +69,9 @@ public class App {
                     System.out.println("Logarytm naturalny liczby zespolonej " + secondComplex + " wynosi: "
                             + operation.logarithm(secondComplex));
                     System.out.println();
-                    System.out.println("e do potęgi liczby zespolonej " + firstComplex + " wynosi: "
+                    System.out.println("e^" + firstComplex + " wynosi: "
                             + operation.expotential(firstComplex));
-                    System.out.println("e do potęgi liczby zespolonej " + secondComplex + " wynosi: "
+                    System.out.println("e^" + secondComplex + " wynosi: "
                             + operation.expotential(secondComplex));
                     System.out.println();
                     System.out.println("Postać trygonometryczna liczby zespolonej " + firstComplex + " wynosi: "
@@ -128,9 +124,9 @@ public class App {
                             + operation.logarithm(secondComplex));
                     break;
                 case "10":
-                    System.out.println("e do potęgi liczby zespolonej " + firstComplex + " wynosi: "
+                    System.out.println("e^" + firstComplex + " wynosi: "
                             + operation.expotential(firstComplex));
-                    System.out.println("e do potęgi liczby zespolonej " + secondComplex + " wynosi: "
+                    System.out.println("e^" + secondComplex + " wynosi: "
                             + operation.expotential(secondComplex));
                     break;
                 case "11":
@@ -172,7 +168,7 @@ public class App {
                         "7.Argument liczb zespolonych,\n"+
                         "8.Odwrotność liczb zespolonych,\n"+
                         "9.Logarytm liczb zespolonych,\n"+
-                        "10.e do potęgi liczb zespolonych (e^Z),\n"+
+                        "10.e^Z,\n"+
                         "11.Postać trygonometryczna.\n");
         System.out.println("Wybierz operację która ma zostać wykonana\n(wpisanie \"0\" wyświetli wyniki każdej operacji, \"H\" wyświetli spis funkcji).\n");
     }

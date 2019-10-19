@@ -1,5 +1,4 @@
 import Entity.ComplexNum;
-//TODO: Dodać warunek gdy część rzeczywista oraz urojona są równe 0 w celu nierozpoczynania obliczeń
 
 /**
  * Klasa zawierająca metody działań na liczbach zespolonych
@@ -48,16 +47,11 @@ public class Operation {
      * @return Zwraca obiekt liczby zespolonej stanowiącej iloczyn (a,b)(c,d)
      */
     public ComplexNum multiplicate(ComplexNum firstComplex, ComplexNum secondComplex) {
-        // TODO: sprawdzić wszystkie warunki
-
         try {
-            double realFirst = firstComplex.getReal();
-            double imgFirst = firstComplex.getImg();
-            double realSecond = secondComplex.getReal();
-            double imgSecond = secondComplex.getImg();
-            
-            return new ComplexNum((realFirst * realSecond - imgFirst * imgSecond),
-                    (realFirst * imgSecond + imgFirst * realSecond)); 
+            return new ComplexNum(
+                    (firstComplex.getReal() * secondComplex.getReal() - firstComplex.getImg() * secondComplex.getImg()),
+                    (firstComplex.getReal() * secondComplex.getImg()
+                            + firstComplex.getImg() * secondComplex.getReal()));
         } catch (Exception multiplicateException) {
             System.out.println("Error: " + multiplicateException.getMessage());
             return null;
@@ -73,18 +67,17 @@ public class Operation {
      */
     public ComplexNum divide(ComplexNum firstComplex, ComplexNum secondComplex) {
         try {
-            double realFirst = firstComplex.getReal();
-            double imgFirst = firstComplex.getImg();
-            double realSecond = secondComplex.getReal();
-            double imgSecond = secondComplex.getImg();
+            double real = (firstComplex.getReal() * secondComplex.getReal()
+                    + firstComplex.getImg() * secondComplex.getImg())
+                    / (secondComplex.getReal() * secondComplex.getReal()
+                            + secondComplex.getImg() * secondComplex.getImg());
 
-            double real = (realFirst * realSecond + imgFirst * imgSecond)
-                    / (realSecond * realSecond + imgSecond * imgSecond);
-            double imaginary = (imgFirst * realSecond - realFirst * imgSecond)
-                    / (realSecond * realSecond + imgSecond * imgSecond);
+            double imaginary = (firstComplex.getImg() * secondComplex.getReal()
+                    - firstComplex.getReal() * secondComplex.getImg())
+                    / (secondComplex.getReal() * secondComplex.getReal()
+                            + secondComplex.getImg() * secondComplex.getImg());
 
-            return new ComplexNum(real, imaginary);
-            
+            return new ComplexNum(real, imaginary);           
         } catch (Exception divideException) {
             System.out.println("Error: " + divideException.getMessage());
             return null;
@@ -147,8 +140,8 @@ public class Operation {
         try{
             double real = Math.log(modulus(complexNumber));
             double img = angle(complexNumber);
-            ComplexNum complexNum = new ComplexNum(real, img);
-            return complexNum;
+
+            return new ComplexNum(real, img);
         }catch (Exception logaritmException) {
             System.out.println("Error: " + logaritmException.getMessage());
             return null;
