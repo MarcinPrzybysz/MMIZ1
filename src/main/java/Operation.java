@@ -33,8 +33,8 @@ public class Operation {
         try {
             return new ComplexNum((firstComplex.getReal() - secondComplex.getReal()),
                     (firstComplex.getImg() - secondComplex.getImg()));
-        } catch (Exception substractException) {
-            System.out.println("Error: " + substractException.getMessage());
+        } catch (Exception subtractException) {
+            System.out.println("Error: " + subtractException.getMessage());
             return null;
         }
     }
@@ -70,14 +70,21 @@ public class Operation {
             double real = (firstComplex.getReal() * secondComplex.getReal()
                     + firstComplex.getImg() * secondComplex.getImg())
                     / (secondComplex.getReal() * secondComplex.getReal()
-                            + secondComplex.getImg() * secondComplex.getImg());
+                    + secondComplex.getImg() * secondComplex.getImg());
 
-            double imaginary = (firstComplex.getImg() * secondComplex.getReal()
-                    - firstComplex.getReal() * secondComplex.getImg())
-                    / (secondComplex.getReal() * secondComplex.getReal()
-                            + secondComplex.getImg() * secondComplex.getImg());
+            double imgCounter = (firstComplex.getImg() * secondComplex.getReal()
+                    - firstComplex.getReal() * secondComplex.getImg());
+            double imgDenominator = (secondComplex.getReal() * secondComplex.getReal()
+                    + secondComplex.getImg() * secondComplex.getImg());
 
-            return new ComplexNum(real, imaginary);           
+            if (imgDenominator == 0) {
+                System.out.println("Błąd dzielenia przez zero");
+                return null;
+            } else {
+                double imaginary = imgCounter / imgDenominator;
+                return new ComplexNum(real,imaginary);
+            }
+
         } catch (Exception divideException) {
             System.out.println("Error: " + divideException.getMessage());
             return null;
@@ -117,6 +124,7 @@ public class Operation {
 
     /**
      * Oblicza argument liczby zespolonej (kąt skierowany między wektorem reprezentującym liczbę zespoloną, a osią rzeczywistą
+     *
      * @param complexNumber
      * @return zwraca wartość kąta wyrazoną w radianach
      */
@@ -124,7 +132,7 @@ public class Operation {
         try {
             return Math.atan2(complexNumber.getImg(), complexNumber.getReal());
         } catch (Exception angleException) {
-            
+
             System.out.println("Error: " + angleException.getMessage());
             return null;
         }
@@ -137,12 +145,14 @@ public class Operation {
      * @return obliekt liczby zespoloną
      */
     public ComplexNum logarithm(ComplexNum complexNumber) {
-        try{
+        try {
             double real = Math.log(modulus(complexNumber));
             double img = angle(complexNumber);
 
             return new ComplexNum(real, img);
-        }catch (Exception logaritmException) {
+
+
+        } catch (Exception logaritmException) {
             System.out.println("Error: " + logaritmException.getMessage());
             return null;
         }
@@ -150,40 +160,42 @@ public class Operation {
 
     /**
      * Metoda zwraca odwrotność liczby zespolonej
+     *
      * @param complexNumber Obiekt liczby zespolonej
      * @return Obiekt zawierający odwrotność podanej liczby zespolonej
      */
     public ComplexNum inverse(ComplexNum complexNumber) {
         try {
             if (complexNumber.getReal() == 0 && complexNumber.getImg() == 0) {
-                System.out.println("Działanie 1/0 jest niezdefiniowane (nie możliwe do wykonania)");
+                System.out.println("Działanie 1/0 jest niezdefiniowane (niemożliwe do wykonania)");
                 return null;
-            }
-            else {
-                    complexNumber = conjugate(complexNumber);
+            } else {
+                complexNumber = conjugate(complexNumber);
 
-                    double denominator = complexNumber.getImg() * complexNumber.getImg() + complexNumber.getReal() * complexNumber.getReal();
+                double denominator = complexNumber.getImg() * complexNumber.getImg() + complexNumber.getReal() * complexNumber.getReal();
 
-                    return new ComplexNum(complexNumber.getReal() / denominator, complexNumber.getImg() / denominator);
+                return new ComplexNum(complexNumber.getReal() / denominator, complexNumber.getImg() / denominator);
             }
-        } catch (Exception inversException) {
-            System.out.println("Error: " + inversException.getMessage());
-            return null; 
+        } catch (Exception inverseException) {
+            System.out.println("Error: " + inverseException.getMessage());
+            return null;
         }
     }
 
     /**
      * Metoda zwraca wartość e^Z
+     *
      * @param complexNumber Obiekt liczby zespolonej (Z)
      * @return Obiekt będący wynikiem działania e^Z
      */
     public ComplexNum expotential(ComplexNum complexNumber) {
         return new ComplexNum(Math.exp(complexNumber.getReal()) * Math.cos(complexNumber.getImg()),
-                Math.exp(complexNumber.getReal()) * Math.sin(complexNumber.getImg())); 
+                Math.exp(complexNumber.getReal()) * Math.sin(complexNumber.getImg()));
     }
 
     /**
      * Metoda zwraca zapis trygonometryczny liczby zespolonej
+     *
      * @param complexNumber Obiekt liczby zespolonej
      * @return Strumień zawierający zapis trygonometryczny liczby zespolonej
      */

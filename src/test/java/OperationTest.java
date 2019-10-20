@@ -19,7 +19,7 @@ public class OperationTest {
     }
 
     @Test
-    public void addDouble() {
+    public void add() {
         ComplexNum x = new ComplexNum(-1.51,0);
         ComplexNum y = new ComplexNum(2.25,3.01);
 
@@ -70,7 +70,6 @@ public class OperationTest {
     public void divideZero(){
         ComplexNum x = new ComplexNum(3,-3);
         ComplexNum y = new ComplexNum(1,2);
-    //TODO: y wartosc real i img ustawić na zero, ma wyrzucać null pointer exception??
 
         ComplexNum result = new ComplexNum(-0.6,-1.8);
 
