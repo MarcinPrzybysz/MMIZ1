@@ -1,11 +1,13 @@
 import Entity.ComplexNum;
 
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * Klasa zawierająca metody reprezentacji (zapisu i wyświetlenia)
  */
 public class Representation {
+    final static String DOUBLE_PATTERN = "[-]?[0-9]+(\\.)?[0-9]*";
 
     /**
      * Metoda wyświetlająca liczbę zespoloną a+bi
@@ -53,15 +55,34 @@ public class Representation {
      * @return Zwraca nowy obiekt liczby zespolonej
      */
     public ComplexNum addNewComplex() {
-        //todo: data input verification
-
+        String real="";
+        String img="";
         Scanner scan = new Scanner(System.in);
 
-        System.out.print("Podaj część rzeczywistą: ");
-        String real = scan.nextLine();
+        boolean invalidInput=true;
 
-        System.out.print("Podaj część urojoną: ");
-        String img = scan.nextLine();
+        while(invalidInput) {
+            System.out.print("Podaj część rzeczywistą: ");
+            real = scan.nextLine();
+            if(Pattern.matches(DOUBLE_PATTERN, real)) {
+                invalidInput = false;
+            }else{
+                System.out.println("Błędna wartość, to nie jest liczba");
+            }
+        }
+
+        invalidInput=true;
+
+        while(invalidInput) {
+            System.out.print("Podaj część urojoną: ");
+            img = scan.nextLine();
+            if(Pattern.matches(DOUBLE_PATTERN, img)) {
+                invalidInput = false;
+            }else{
+                System.out.println("Błędna wartość, to nie jest liczba");
+            }
+        }
+
 
         ComplexNum complex = new ComplexNum(Double.valueOf(real), Double.valueOf(img));
         return complex;
